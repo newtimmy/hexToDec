@@ -7,26 +7,28 @@ class decCalculator:
     def dec_to_hex(self, dec_as_string):
         """
 
-        :param hex_as_string:  hex parameter as string
-        :return: dec paramenter as string
+        :param dec_as_string: decimal parameter as string
+        :return: hexadecimal parameter as string
         """
+
+        hex = ""
 
         try:
             dec = int(dec_as_string)
         except:
             return "No decimal number given"
-        hex = ""
+
         while(dec>0):
             rest = dec%16
             hex = self.calc_dec_to_string(str(rest)) + hex
             dec = math.floor(dec/16)
         return hex
 
-    def calc_dec_to_string(self, character):
+    def calc_dec_to_string(self, decimal):
         """
 
-        :param character: character like "A"
-        :return: transformed character to hex value
+        :param decimal: byte in decimal number like "11"
+        :return: transformed byte in decimal to hex value
         """
         switcher = {
             "0": "0",
@@ -46,7 +48,7 @@ class decCalculator:
             "14": "E",
             "15": "F"
         }
-        if (switcher.get(character, "nothing") != "nothing"):
-            return switcher.get(character, "nothing")
+        if (switcher.get(decimal, "nothing") != "nothing"):
+            return switcher.get(decimal, "nothing")
         else:
             return -1
